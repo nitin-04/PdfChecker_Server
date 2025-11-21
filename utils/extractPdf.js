@@ -1,11 +1,6 @@
-const fs = require('fs');
 const pdfParse = require('pdf-parse');
 
-// console.log('here is my type', typeof pdfParse);
-
-module.exports = async function extractPdf(pdfPath) {
-  const dataBuffer = fs.readFileSync(pdfPath);
-
+module.exports = async function extractPdf(dataBuffer) {
   const data = await pdfParse(dataBuffer);
 
   const pages = (data.text || '')

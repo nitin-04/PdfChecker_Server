@@ -1,9 +1,10 @@
 const express = require('express');
 const multer = require('multer');
+const storage = multer.memoryStorage();
 const extractPdf = require('../utils/extractPdf');
 const { callLLMForRules } = require('../utils/llm');
 
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ storage: storage });
 const router = express.Router();
 
 router.post('/', upload.single('pdf'), async (req, res) => {
