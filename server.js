@@ -8,6 +8,9 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cors());
 
+app.get('/', (req, res) => {
+  res.send('Backend is active! Use the /api/check endpoint.');
+});
 app.use('/api/check', checkRouter);
 
 const PORT = process.env.PORT || 4000;
