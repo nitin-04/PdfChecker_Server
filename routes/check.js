@@ -10,7 +10,7 @@ const router = express.Router();
 router.post('/', upload.single('pdf'), async (req, res) => {
   try {
     if (!req.file) return res.status(400).json({ error: 'PDF required' });
-    const textByPages = await extractPdf(req.file.path);
+    const textByPages = await extractPdf(req.file.buffer);
     const rules = req.body.rules ? JSON.parse(req.body.rules) : [];
     if (!Array.isArray(rules) || rules.length !== 3) {
       return res
